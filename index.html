@@ -52,28 +52,47 @@
 
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stay on the Same Page</title>
-    <script>
-        window.onload = function () {
-            // Get the current path (URL after the domain)
-            const currentPath = window.location.pathname;
+    <title>Ajay Dhurwe - Developer</title>
 
-            // Store the current path in sessionStorage
-            sessionStorage.setItem("lastPage", currentPath);
+    <script>
+        // Function to store the last visited page
+        function saveLastPage() {
+            sessionStorage.setItem("lastPage", window.location.pathname);
+        }
+
+        // Function to redirect the user to the last visited page on load
+        function redirectToLastPage() {
+            const lastPage = sessionStorage.getItem("lastPage");
+            if (lastPage && lastPage !== window.location.pathname) {
+                window.location.href = lastPage;
+            }
+        }
+
+        // Run the function when the page loads
+        window.onload = function () {
+            redirectToLastPage();
+            saveLastPage();
+        };
+
+        // Save last visited page when navigating
+        window.onbeforeunload = function () {
+            saveLastPage();
         };
     </script>
 </head>
 <body>
-    <h1>Welcome to Your Website</h1>
-    <p>Users will stay on the same page even after refreshing.</p>
+    <div id="root"></div>
+
+    <!-- Navigation Links -->
+    <a href="/mcq">MCQ</a>
+    <a href="/jobs">Jobs</a>
+    <a href="/a²class">A²Class</a>
+    <a href="/profile">Profile</a>
 </body>
 </html>
+
