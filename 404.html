@@ -1,4 +1,4 @@
-
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,5 +36,40 @@
     
 <body>
     <p>Reloading the same page...</p>
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <script>
+        window.onload = function () {
+            const savedPath = sessionStorage.getItem('lastPage');
+            if (savedPath) {
+                window.location.href = savedPath;
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>Redirecting to the last visited page...</p>
 </body>
 </html>
