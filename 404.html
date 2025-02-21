@@ -59,10 +59,7 @@
 
 
 
-
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -70,14 +67,14 @@
     <title>Page Not Found (404)</title>
     <script>
         window.onload = function () {
-            // Get the last visited page from sessionStorage
+            // Get the last visited valid page from sessionStorage
             const lastPage = sessionStorage.getItem("lastPage");
 
-            // If a valid last page exists, redirect the user there
+            // If a valid last page exists, redirect to it
             if (lastPage) {
                 window.location.href = lastPage;
             } else {
-                // If no valid last page, redirect to the home page
+                // If no valid last page is found, redirect to home page
                 window.location.href = "/";
             }
         };
