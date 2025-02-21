@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,7 +27,8 @@
     <link rel="stylesheet" crossorigin href="/assets/index-FDcmN-Ex.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
+
 
     <a href="https://ajaydhurwe.tech/mcq"></a>
     <a href="#jobs"></a>
@@ -37,3 +38,56 @@
   </body>
 </html> 
 
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Dhurwe - Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPath = window.location.pathname;
+            sessionStorage.setItem("lastPage", currentPath);
+        });
+
+        window.onload = function () {
+            const savedPath = sessionStorage.getItem("lastPage");
+            if (savedPath && savedPath !== window.location.pathname) {
+                window.location.href = savedPath;
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <a href="/mcq">MCQ</a>
+    <a href="/jobs">Jobs</a>
+    <a href="/a²class">A² Class</a>
+    <a href="/profile">Profile</a>
+</body>
+</html>
