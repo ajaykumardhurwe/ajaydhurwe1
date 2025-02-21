@@ -56,38 +56,24 @@
 
 
 
-
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajay Dhurwe - Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+    <title>Stay on the Same Page</title>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const currentPath = window.location.pathname;
-            sessionStorage.setItem("lastPage", currentPath);
-        });
-
         window.onload = function () {
-            const savedPath = sessionStorage.getItem("lastPage");
-            if (savedPath && savedPath !== window.location.pathname) {
-                window.location.href = savedPath;
-            }
+            // Get the current path (URL after the domain)
+            const currentPath = window.location.pathname;
+
+            // Store the current path in sessionStorage
+            sessionStorage.setItem("lastPage", currentPath);
         };
     </script>
 </head>
 <body>
-    <div id="root"></div>
-
-    <a href="/mcq">MCQ</a>
-    <a href="/jobs">Jobs</a>
-    <a href="/a²class">A² Class</a>
-    <a href="/profile">Profile</a>
+    <h1>Welcome to Your Website</h1>
+    <p>Users will stay on the same page even after refreshing.</p>
 </body>
 </html>
