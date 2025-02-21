@@ -52,29 +52,22 @@
 
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found (404)</title>
+
     <script>
         window.onload = function () {
-            // Get the last visited valid page from sessionStorage
             const lastPage = sessionStorage.getItem("lastPage");
 
-            // If a valid last page exists, redirect to it
             if (lastPage) {
+                // Redirect to last visited page
                 window.location.href = lastPage;
             } else {
-                // If no valid last page is found, redirect to home page
+                // Redirect to the homepage if no previous page is stored
                 window.location.href = "/";
             }
         };
@@ -82,6 +75,6 @@
 </head>
 <body>
     <h1>404 - Page Not Found</h1>
-    <p>Redirecting you to the last visited page...</p>
+    <p>Redirecting to your last visited page...</p>
 </body>
 </html>
