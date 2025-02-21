@@ -1,4 +1,4 @@
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,5 +35,56 @@
     
 <body>
     <p>Reloading the same page...</p>
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found (404)</title>
+    <script>
+        window.onload = function () {
+            // Get the last visited page from sessionStorage
+            const lastPage = sessionStorage.getItem("lastPage");
+
+            // If a valid last page exists, redirect the user there
+            if (lastPage) {
+                window.location.href = lastPage;
+            } else {
+                // If no valid last page, redirect to the home page
+                window.location.href = "/";
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>404 - Page Not Found</h1>
+    <p>Redirecting you to the last visited page...</p>
 </body>
 </html>
