@@ -99,7 +99,7 @@
 
 
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -109,7 +109,7 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- Google Font & Icons -->
+    <!-- Google Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 
@@ -172,15 +172,9 @@
         window.onload = function () {
             const lastPage = sessionStorage.getItem("lastPage");
 
-            if (lastPage) {
-                setTimeout(() => {
-                    window.location.href = lastPage;
-                }, 3000); // Redirect after 3 seconds
-            } else {
-                setTimeout(() => {
-                    window.location.href = "/";
-                }, 3000);
-            }
+            setTimeout(() => {
+                window.location.href = lastPage ? lastPage : "/";
+            }, 3000); // Redirect after 3 seconds
         };
     </script>
 </head>
@@ -195,3 +189,4 @@
     </div>
 </body>
 </html>
+
