@@ -839,7 +839,7 @@ export function TestList() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">📚 Enter your subject name or topic</h1>
+      <h1 className="text-2xl font-bold mb-6">📚 MCQ Test</h1>
 
       <input
         type="text"
@@ -865,19 +865,11 @@ export function TestList() {
                   <h2 className="text-xl font-semibold">{test.title}</h2>
                   <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
                   <div className="flex items-center justify-between">
-               <PlayCircle className="w-15 h-15 mt-0 text-blue-600 hover:underline" />
+               <PlayCircle className="w-20 h-16 mt-0 text-blue-600 hover:underline" />
              </div>
 
                   </Link>
-             <a
-  href="https://play.google.com/store/apps/details?id=com.ajaykumardhurwe.ajaydhurwe"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex items-center text-green-600 mt-4 hover:underline"
->
-  <FaGooglePlay className="w-6 h-6 mr-2 mt-0" /> Download App
-</a>
-
+            
                 </div>
                 <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
                 <p className="text-gray-600 mt-2 hover:underline">🎯 Click to start the test</p>
@@ -897,6 +889,16 @@ export function TestList() {
                 >
                   <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-2 hover:underline" />
                 </button>
+
+                <a
+  href="https://play.google.com/store/apps/details?id=com.ajaykumardhurwe.ajaydhurwe"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center text-orange-600 mt-4 hover:underline"
+>
+  <FaGooglePlay className="w-6 h-6 mr-2 mt-0" /> Get App from Play Store 
+</a>
+
               </div>
             ))
           ) : (
