@@ -503,3 +503,787 @@ export function MCQTest() {
 
 
 
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+
+// interface Question {
+//   question: string;
+//   options: {
+//     A: string;
+//     B: string;
+//     C: string;
+//     D: string;
+//   };
+//   correctAnswer: string;
+//   explanation: string;
+// }
+
+// export function MCQTest() {
+//   const { testId } = useParams();
+//   const [questions, setQuestions] = useState<Question[]>([]);
+//   const [testSheetUrls, setTestSheetUrls] = useState<{ [key: string]: string }>({});
+//   const [loading, setLoading] = useState(true);
+
+//   // Your published Google Sheet CSV URL
+//   const googleSheetCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=332339889&single=true&output=csv";
+
+//   useEffect(() => {
+//     const fetchTestUrls = async () => {
+//       try {
+//         const response = await fetch(googleSheetCSV);
+//         const csvData = await response.text();
+//         const rows = csvData.split("\n").slice(1); // Remove headers
+
+//         const urls: { [key: string]: string } = {};
+//         rows.forEach(row => {
+//           const [testId, url] = row.split(",");
+//           urls[testId.trim()] = url.trim();
+//         });
+
+//         setTestSheetUrls(urls);
+//       } catch (error) {
+//         console.error("Error fetching test URLs:", error);
+//       }
+//     };
+
+//     fetchTestUrls();
+//   }, []);
+
+//   useEffect(() => {
+//     if (!testSheetUrls[testId]) return;
+
+//     const fetchQuestions = async () => {
+//       try {
+//         const response = await fetch(testSheetUrls[testId]);
+//         const csvData = await response.text();
+//         const rows = csvData.split("\n").slice(1); // Remove headers
+
+//         const parsedQuestions = rows.map(row => {
+//           const [question, optionA, optionB, optionC, optionD, correctAnswer, explanation] = row.split(",");
+//           return {
+//             question: question.trim(),
+//             options: {
+//               A: optionA.trim(),
+//               B: optionB.trim(),
+//               C: optionC.trim(),
+//               D: optionD.trim(),
+//             },
+//             correctAnswer: correctAnswer.trim(),
+//             explanation: explanation.trim(),
+//           };
+//         });
+
+//         setQuestions(parsedQuestions);
+//         setLoading(false);
+//       } catch (error) {
+//         console.error("Error fetching questions:", error);
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchQuestions();
+//   }, [testId, testSheetUrls]);
+
+//   if (loading) return <p>Loading...</p>;
+
+//   return (
+//     <div>
+//       <h1>MCQ Test</h1>
+//       {questions.map((q, index) => (
+//         <div key={index}>
+//           <h3>{q.question}</h3>
+//           <ul>
+//             {Object.entries(q.options).map(([key, value]) => (
+//               <li key={key}>{key}: {value}</li>
+//             ))}
+//           </ul>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+
+// interface Question {
+//   question: string;
+//   options: { A: string; B: string; C: string; D: string };
+//   correctAnswer: string;
+//   explanation: string;
+// }
+
+// export function MCQTest() {
+//   const { testId } = useParams(); // Get the test ID from URL
+//   const [testUrls, setTestUrls] = useState<{ [key: string]: string }>({});
+//   const [questions, setQuestions] = useState<Question[]>([]);
+//   const [loading, setLoading] = useState(true);
+
+//   const MASTER_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=332339889&single=true&output=csv";
+
+//   useEffect(() => {
+//     // Fetch the master sheet containing test URLs
+//     const fetchTestUrls = async () => {
+//       try {
+//         const response = await fetch(MASTER_SHEET_URL);
+//         const csvData = await response.text();
+//         const rows = csvData.split("\n");
+
+//         const urls: { [key: string]: string } = {};
+//         rows.slice(1).forEach((row) => {
+//           const [test, url] = row.split(",");
+//           urls[test.trim()] = url.trim();
+//         });
+
+//         setTestUrls(urls);
+//       } catch (error) {
+//         console.error("Error fetching test URLs:", error);
+//       }
+//     };
+
+//     fetchTestUrls();
+//   }, []);
+
+//   useEffect(() => {
+//     const fetchQuestions = async () => {
+//       if (!testUrls[testId]) {
+//         console.error("Invalid test ID or URL not found!");
+//         setLoading(false);
+//         return;
+//       }
+
+//       try {
+//         const response = await fetch(testUrls[testId]);
+//         const csvData = await response.text();
+//         const rows = csvData.split("\n");
+
+//         const parsedQuestions = rows.slice(1).map((row) => {
+//           const [question, A, B, C, D, correctAnswer, explanation] = row.split(",");
+//           return {
+//             question: question.trim(),
+//             options: { A: A.trim(), B: B.trim(), C: C.trim(), D: D.trim() },
+//             correctAnswer: correctAnswer.trim(),
+//             explanation: explanation.trim(),
+//           };
+//         });
+
+//         setQuestions(parsedQuestions);
+//       } catch (error) {
+//         console.error("Error fetching questions:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     if (Object.keys(testUrls).length > 0 && testId) {
+//       fetchQuestions();
+//     }
+//   }, [testId, testUrls]);
+
+//   if (loading) return <p>Loading questions...</p>;
+
+//   return (
+//     <div>
+//       <h2>Test: {testId}</h2>
+//       {questions.length === 0 ? (
+//         <p>No questions found.</p>
+//       ) : (
+//         questions.map((q, index) => (
+        
+
+//           <div key={index} className="border p-4 my-2">
+          
+//         <p className="text-lg font-semibold mb-4">
+
+//             <h3>{q.question} ❓</h3>
+//         </p>
+
+//             <ul>
+//               {Object.entries(q.options).map(([key, value]) => (
+//                 <li key={key}><strong>{key}:</strong> {value}</li>
+//               ))}
+//             </ul>
+//             <p><strong>Answer:</strong> {q.correctAnswer}</p>
+//             <p><strong>Explanation:</strong> {q.explanation}</p>
+//           </div>
+//         ))
+//       )}
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+
+// interface Question {
+//   question: string;
+//   options: { A: string; B: string; C: string; D: string };
+//   correctAnswer: string;
+//   explanation: string;
+// }
+
+// export function MCQTest() {
+//   const { testId } = useParams(); // Get the test ID from URL
+//   const [testUrls, setTestUrls] = useState<{ [key: string]: string }>({});
+//   const [questions, setQuestions] = useState<Question[]>([]);
+//   const [loading, setLoading] = useState(true);
+
+//   const MASTER_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=332339889&single=true&output=csv";
+
+//   useEffect(() => {
+//     // Fetch the master sheet containing test URLs
+//     const fetchTestUrls = async () => {
+//       try {
+//         const response = await fetch(MASTER_SHEET_URL);
+//         const csvData = await response.text();
+//         const rows = csvData.split("\n");
+
+//         const urls: { [key: string]: string } = {};
+//         rows.slice(1).forEach((row) => {
+//           const [test, url] = row.split(",");
+//           urls[test.trim()] = url.trim();
+//         });
+
+//         setTestUrls(urls);
+//       } catch (error) {
+//         console.error("Error fetching test URLs:", error);
+//       }
+//     };
+
+//     fetchTestUrls();
+//   }, []);
+
+//   useEffect(() => {
+//     const fetchQuestions = async () => {
+//       if (!testUrls[testId]) {
+//         console.error("Invalid test ID or URL not found!");
+//         setLoading(false);
+//         return;
+//       }
+
+//       try {
+//         const response = await fetch(testUrls[testId]);
+//         const csvData = await response.text();
+//         const rows = csvData.split("\n");
+
+//         const parsedQuestions = rows.slice(1).map((row) => {
+//           const [question, A, B, C, D, correctAnswer, explanation] = row.split(",");
+//           return {
+//             question: question.trim(),
+//             options: { A: A.trim(), B: B.trim(), C: C.trim(), D: D.trim() },
+//             correctAnswer: correctAnswer.trim(),
+//             explanation: explanation.trim(),
+//           };
+//         });
+
+//         setQuestions(parsedQuestions);
+//       } catch (error) {
+//         console.error("Error fetching questions:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     if (Object.keys(testUrls).length > 0 && testId) {
+//       fetchQuestions();
+//     }
+//   }, [testId, testUrls]);
+
+//   if (loading) return <p>Loading questions...</p>;
+
+//   return (
+//     <div>
+//       <h2>Test: {testId}</h2>
+//       {questions.length === 0 ? (
+//         <p>No questions found.</p>
+//       ) : (
+//         questions.map((q, index) => (
+        
+
+//           <div key={index} className="border p-4 my-2">
+          
+//         <p className="text-lg font-semibold mb-4">
+
+//             <h3>{q.question} ❓</h3>
+//         </p>
+
+//             <ul>
+//               {Object.entries(q.options).map(([key, value]) => (
+//                 <li key={key}><strong>{key}:</strong> {value}</li>
+//               ))}
+//             </ul>
+//             <p><strong>Answer:</strong> {q.correctAnswer}</p>
+//             <p><strong>Explanation:</strong> {q.explanation}</p>
+//           </div>
+//         ))
+//       )}
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { FaFacebook, FaInstagram, FaShare, FaWhatsapp } from "react-icons/fa";
+
+// export function MCQTest() {
+//   const [questions, setQuestions] = useState([]);
+//   const [currentQuestion, setCurrentQuestion] = useState(0);
+//   const [selectedAnswer, setSelectedAnswer] = useState(null);
+//   const [timeLeft, setTimeLeft] = useState(300); // Example time
+//   const [testUrls, setTestUrls] = useState({});
+
+//   useEffect(() => {
+//     // Fetch test URLs from Google Sheets (Published CSV)
+//     fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=332339889&single=true&output=csv")
+//       .then((response) => response.text())
+//       .then((csvData) => {
+//         const rows = csvData.split("\n");
+//         const urls = {};
+//         rows.forEach((row) => {
+//           const [testName, url] = row.split(",");
+//           urls[testName.trim()] = url.trim();
+//         });
+//         setTestUrls(urls);
+//       })
+//       .catch((error) => console.error("Error fetching test URLs:", error));
+//   }, []);
+
+//   const handleAnswer = (key) => {
+//     setSelectedAnswer(key);
+//   };
+
+//   const handleNext = () => {
+//     if (currentQuestion < questions.length - 1) {
+//       setCurrentQuestion(currentQuestion + 1);
+//       setSelectedAnswer(null);
+//     }
+//   };
+
+//   const handlePrev = () => {
+//     if (currentQuestion > 0) {
+//       setCurrentQuestion(currentQuestion - 1);
+//       setSelectedAnswer(null);
+//     }
+//   };
+
+//   const handleSkip = () => {
+//     handleNext();
+//   };
+
+//   return (
+//     <div className="container mx-auto p-6">
+//       <div className="bg-white rounded-lg shadow p-6">
+//         <div className="flex justify-between items-center mb-6">
+//           <h1 className="text-lg font-bold">
+//             Question {currentQuestion + 1} / {questions.length}
+//           </h1>
+//           <p className="text-sm text-gray-600">
+//             ⏱️ Time Left: {Math.floor(timeLeft / 60)}:
+//             {String(timeLeft % 60).padStart(2, "0")}
+//           </p>
+//         </div>
+
+//         <p className="text-lg font-semibold mb-4">
+//           {questions[currentQuestion]?.question} ❓
+//         </p>
+
+//         <div className="space-y-3">
+//           {questions[currentQuestion]?.options &&
+//             Object.entries(questions[currentQuestion].options).map(
+//               ([key, value]) => (
+//                 <button
+//                   key={key}
+//                   onClick={() => handleAnswer(key)}
+//                   className={`block w-full text-left px-4 py-2 rounded-md border ${
+//                     selectedAnswer === key
+//                       ? "bg-blue-50 border-blue-500"
+//                       : "border-gray-300 hover:border-blue-300"
+//                   }`}
+//                 >
+//                   {key}. {value}
+//                 </button>
+//               )
+//             )}
+//         </div>
+
+//         <div className="flex justify-between mt-6">
+//           <button
+//             onClick={handlePrev}
+//             disabled={currentQuestion === 0}
+//             className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200 disabled:opacity-50"
+//           >
+//             ⬅️ Previous
+//           </button>
+//           <button
+//             onClick={handleSkip}
+//             className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"
+//           >
+//             Skip ➡️
+//           </button>
+//           <button
+//             onClick={handleNext}
+//             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+//           >
+//             {currentQuestion === questions.length - 1 ? "Finish ✅" : "Next ➡️"}
+//           </button>
+//         </div>
+
+//         {/* Share Buttons */}
+//         <div className="mt-6 flex justify-center space-x-4">
+//           <FaShare />
+
+//           {/* WhatsApp Share */}
+//           <a
+//             href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+//               `🚀 Try this question:\n\n${
+//                 questions[currentQuestion]?.question
+//               }\n\n${Object.entries(
+//                 questions[currentQuestion]?.options || {}
+//               )
+//                 .map(([key, value]) => `${key}. ${value}`)
+//                 .join("\n")}\n\nCan you answer it? 🤔`
+//             )}`}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 space-x-2"
+//           >
+//             <FaWhatsapp size={20} />
+//           </a>
+
+//           {/* Facebook Share */}
+//           <a
+//             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+//               `https://ajaydhurwe.tech/test-question?text=${encodeURIComponent(
+//                 `🚀 Try this question:\n\n${
+//                   questions[currentQuestion]?.question
+//                 }\n\n${Object.entries(
+//                   questions[currentQuestion]?.options || {}
+//                 )
+//                   .map(([key, value]) => `${key}. ${value}`)
+//                   .join("\n")}\n\nCan you answer it? 🤔`
+//               )}`
+//             )}`}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 space-x-2"
+//           >
+//             <FaFacebook size={20} />
+//           </a>
+
+//           {/* Instagram Share (Copy to Clipboard) */}
+//           <button
+//             onClick={() => {
+//               const textToCopy = `🚀 Try this question:\n\n${
+//                 questions[currentQuestion]?.question
+//               }\n\n${Object.entries(
+//                 questions[currentQuestion]?.options || {}
+//               )
+//                 .map(([key, value]) => `${key}. ${value}`)
+//                 .join("\n")}\n\nCan you answer it? 🤔`;
+
+//               navigator.clipboard.writeText(textToCopy);
+//               alert("Copied! Now paste it on Instagram.");
+//             }}
+//             className="flex items-center px-4 py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 space-x-2"
+//           >
+//             <FaInstagram size={20} />
+//             <span>Copy for Instagram</span>
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// // export default MCQTestScreen;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { FaFacebook, FaInstagram, FaShare, FaWhatsapp } from "react-icons/fa";
+
+// export function MCQTest() {
+//   const [questions, setQuestions] = useState([]);
+//   const [currentQuestion, setCurrentQuestion] = useState(0);
+//   const [selectedAnswer, setSelectedAnswer] = useState(null);
+//   const [timeLeft, setTimeLeft] = useState(300); // Example time
+//   const [testUrls, setTestUrls] = useState({});
+
+//   useEffect(() => {
+//     // Fetch test URLs from Google Sheets
+//     fetch(
+//       "https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=332339889&single=true&output=csv"
+//     )
+//       .then((response) => response.text())
+//       .then((csvData) => {
+//         console.log("Fetched CSV Data:", csvData); // Debugging log
+//         const rows = csvData.trim().split("\n"); // Trim to remove extra lines
+//         const urls = {};
+
+//         rows.forEach((row, index) => {
+//           const columns = row.split(",");
+//           if (columns.length >= 2) {
+//             const testName = columns[0].trim();
+//             const url = columns[1].trim();
+//             urls[testName] = url;
+//           }
+//         });
+
+//         console.log("Parsed Test URLs:", urls);
+//         setTestUrls(urls);
+//       })
+//       .catch((error) => console.error("Error fetching test URLs:", error));
+//   }, []);
+
+//   const handleAnswer = (key) => {
+//     setSelectedAnswer(key);
+//   };
+
+//   const handleNext = () => {
+//     if (currentQuestion < questions.length - 1) {
+//       setCurrentQuestion(currentQuestion + 1);
+//       setSelectedAnswer(null);
+//     }
+//   };
+
+//   const handlePrev = () => {
+//     if (currentQuestion > 0) {
+//       setCurrentQuestion(currentQuestion - 1);
+//       setSelectedAnswer(null);
+//     }
+//   };
+
+//   const handleSkip = () => {
+//     handleNext();
+//   };
+
+//   return (
+//     <div className="container mx-auto p-6">
+//       <div className="bg-white rounded-lg shadow p-6">
+//         <div className="flex justify-between items-center mb-6">
+//           <h1 className="text-lg font-bold">
+//             Question {currentQuestion + 1} / {questions.length}
+//           </h1>
+//           <p className="text-sm text-gray-600">
+//             ⏱️ Time Left: {Math.floor(timeLeft / 60)}:
+//             {String(timeLeft % 60).padStart(2, "0")}
+//           </p>
+//         </div>
+
+//         <p className="text-lg font-semibold mb-4">
+//           {questions[currentQuestion]?.question} ❓
+//         </p>
+
+//         <div className="space-y-3">
+//           {questions[currentQuestion]?.options &&
+//             Object.entries(questions[currentQuestion].options).map(
+//               ([key, value]) => (
+//                 <button
+//                   key={key}
+//                   onClick={() => handleAnswer(key)}
+//                   className={`block w-full text-left px-4 py-2 rounded-md border ${
+//                     selectedAnswer === key
+//                       ? "bg-blue-50 border-blue-500"
+//                       : "border-gray-300 hover:border-blue-300"
+//                   }`}
+//                 >
+//                   {key}. {value}
+//                 </button>
+//               )
+//             )}
+//         </div>
+
+//         <div className="flex justify-between mt-6">
+//           <button
+//             onClick={handlePrev}
+//             disabled={currentQuestion === 0}
+//             className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200 disabled:opacity-50"
+//           >
+//             ⬅️ Previous
+//           </button>
+//           <button
+//             onClick={handleSkip}
+//             className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"
+//           >
+//             Skip ➡️
+//           </button>
+//           <button
+//             onClick={handleNext}
+//             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+//           >
+//             {currentQuestion === questions.length - 1 ? "Finish ✅" : "Next ➡️"}
+//           </button>
+//         </div>
+
+//         {/* Share Buttons */}
+//         <div className="mt-6 flex justify-center space-x-4">
+//           <FaShare />
+
+//           {/* WhatsApp Share */}
+//           <a
+//             href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+//               `🚀 Try this question:\n\n${
+//                 questions[currentQuestion]?.question
+//               }\n\n${Object.entries(
+//                 questions[currentQuestion]?.options || {}
+//               )
+//                 .map(([key, value]) => `${key}. ${value}`)
+//                 .join("\n")}\n\nCan you answer it? 🤔`
+//             )}`}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 space-x-2"
+//           >
+//             <FaWhatsapp size={20} />
+//           </a>
+
+//           {/* Facebook Share */}
+//           <a
+//             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+//               `https://ajaydhurwe.tech/test-question?text=${encodeURIComponent(
+//                 `🚀 Try this question:\n\n${
+//                   questions[currentQuestion]?.question
+//                 }\n\n${Object.entries(
+//                   questions[currentQuestion]?.options || {}
+//                 )
+//                   .map(([key, value]) => `${key}. ${value}`)
+//                   .join("\n")}\n\nCan you answer it? 🤔`
+//               )}`
+//             )}`}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 space-x-2"
+//           >
+//             <FaFacebook size={20} />
+//           </a>
+
+//           {/* Instagram Share (Copy to Clipboard) */}
+//           <button
+//             onClick={() => {
+//               const textToCopy = `🚀 Try this question:\n\n${
+//                 questions[currentQuestion]?.question
+//               }\n\n${Object.entries(
+//                 questions[currentQuestion]?.options || {}
+//               )
+//                 .map(([key, value]) => `${key}. ${value}`)
+//                 .join("\n")}\n\nCan you answer it? 🤔`;
+
+//               navigator.clipboard.writeText(textToCopy);
+//               alert("Copied! Now paste it on Instagram.");
+//             }}
+//             className="flex items-center px-4 py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 space-x-2"
+//           >
+//             <FaInstagram size={20} />
+//             <span>Copy for Instagram</span>
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

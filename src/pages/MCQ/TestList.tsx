@@ -484,119 +484,6 @@
 
 
 
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { PlayCircle, Download, Share2 } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-
-export function TestList() {
-  const { subject, topic } = useParams();
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const tests = [
-    { id: 'test1', title: 'भारतीय संविधान भाग 1', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
-    { id: 'test6', title: 'भारतीय संविधान भाग 2', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-2' },
-    { id: 'test11', title: 'भारतीय संविधान भाग 3', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-3' },
-    { id: 'test16', title: 'भारतीय संविधान भाग 4', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-4' },
-    { id: 'test21', title: 'भारतीय संविधान भाग 5', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-5' },
-    { id: 'test26', title: 'भारतीय संविधान भाग 6', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-6' },
-    { id: 'test31', title: 'भारतीय संविधान भाग 7', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-7' },
-    { id: 'test36', title: 'भारतीय संविधान भाग 8', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-8' },
-    { id: 'test41', title: 'भारतीय संविधान भाग 9', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-9' },
-    { id: 'test46', title: 'भारतीय संविधान भाग 10', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-10' },
-    { id: 'test51', title: 'भारतीय संविधान भाग 11', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-11' },
-    { id: 'test56', title: 'भारतीय संविधान भाग 12', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-12' },
-    { id: 'test61', title: 'भारतीय संविधान भाग 13', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-13' },
-    { id: 'test66', title: 'भारतीय संविधान भाग 14', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-14' },
-    { id: 'test71', title: 'भारतीय संविधान भाग 15', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-15' },
-    { id: 'test76', title: 'भारतीय संविधान भाग 16', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-16' },
-    { id: 'test81', title: 'भारतीय संविधान भाग 17', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-17' },
-    { id: 'test86', title: 'भारतीय संविधान भाग 18', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-18' },
-    { id: 'test91', title: 'भारतीय संविधान भाग 19', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-19' },
-    { id: 'test96', title: 'भारतीय संविधान भाग 20', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-20' },
-    { id: 'test101', title: 'भारतीय संविधान भाग 21', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-21' },
-    { id: 'test106', title: 'भारतीय संविधान भाग 22', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-22' }
-
-  ];
-
-  // Filter tests based on search query
-  const filteredTests = tests.filter((test) =>
-    test.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const shareOnWhatsApp = (testTitle, testUrl) => {
-    const message = `🚀 *${testTitle}* - MCQ Test is available!\n📖 Take the test here: ${testUrl}\n✅ Start preparing now!`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
-  };
-
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">📚 Available Tests</h1>
-
-      {/* Search Input */}
-      <input
-        type="text"
-        placeholder="🔍 Search for a test..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full p-2 mb-4 border border-gray-300 rounded-md"
-      />
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filteredTests.length > 0 ? (
-          filteredTests.map((test) => (
-            <div
-              key={test.id}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
-            >
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold">{test.title}</h2>
-                <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
-                  <PlayCircle className="w-6 h-6" />
-                </Link>
-              </div>
-              <p className="text-gray-600 mt-2">🎯 Click to start the test</p>
-
-              {/* PDF Download Button */}
-              <a
-                href={test.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-green-600 mt-4 hover:underline"
-              >
-                <Download className="w-5 h-5 mr-2" /> Download PDF 📄
-              </a>
-
-              {/* WhatsApp Share Button */}
-              <button
-                onClick={() => shareOnWhatsApp(test.title, test.testUrl)}
-                className="flex items-center text-red-500 mt-4 hover:underline"
-              >
-                <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-0 hover:underline" />
-              </button>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500 col-span-full text-center">No tests found.</p>
-        )}
-      </div>
-    </div>
-  );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -657,3 +544,367 @@ export function TestList() {
 //     </div>
 //   );
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import { useParams, Link } from 'react-router-dom';
+// import { PlayCircle, Download, Share2 } from 'lucide-react';
+// import { FaWhatsapp } from 'react-icons/fa';
+
+// export function TestList() {
+//   const { subject, topic } = useParams();
+//   const [searchQuery, setSearchQuery] = useState('');
+
+//   const tests = [
+//     { id: 'test1', title: 'भारतीय संविधान भाग 1', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+//     { id: 'test6', title: 'भारतीय संविधान भाग 2', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-2' },
+//     { id: 'test11', title: 'भारतीय संविधान भाग 3', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-3' },
+//     { id: 'test16', title: 'भारतीय संविधान भाग 4', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-4' },
+//     { id: 'test21', title: 'भारतीय संविधान भाग 5', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-5' },
+//     { id: 'test26', title: 'भारतीय संविधान भाग 6', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-6' },
+//     { id: 'test31', title: 'भारतीय संविधान भाग 7', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-7' },
+//     { id: 'test36', title: 'भारतीय संविधान भाग 8', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-8' },
+//     { id: 'test41', title: 'भारतीय संविधान भाग 9', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-9' },
+//     { id: 'test46', title: 'भारतीय संविधान भाग 10', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-10' },
+//     { id: 'test51', title: 'भारतीय संविधान भाग 11', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-11' },
+//     { id: 'test56', title: 'भारतीय संविधान भाग 12', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-12' },
+//     { id: 'test61', title: 'भारतीय संविधान भाग 13', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-13' },
+//     { id: 'test66', title: 'भारतीय संविधान भाग 14', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-14' },
+//     { id: 'test71', title: 'भारतीय संविधान भाग 15', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-15' },
+//     { id: 'test76', title: 'भारतीय संविधान भाग 16', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-16' },
+//     { id: 'test81', title: 'भारतीय संविधान भाग 17', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-17' },
+//     { id: 'test86', title: 'भारतीय संविधान भाग 18', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-18' },
+//     { id: 'test91', title: 'भारतीय संविधान भाग 19', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-19' },
+//     { id: 'test96', title: 'भारतीय संविधान भाग 20', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-20' },
+//     { id: 'test101', title: 'भारतीय संविधान भाग 21', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-21' },
+//     { id: 'test106', title: 'भारतीय संविधान भाग 22', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-22' }
+
+//   ];
+
+//   // Filter tests based on search query
+//   const filteredTests = tests.filter((test) =>
+//     test.title.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   const shareOnWhatsApp = (testTitle, testUrl) => {
+//     const message = `🚀 *${testTitle}* - MCQ Test is available!\n📖 Take the test here: ${testUrl}\n✅ Start preparing now!`;
+//     const encodedMessage = encodeURIComponent(message);
+//     window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+//   };
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       <h1 className="text-2xl font-bold mb-6">📚 Enter your subject name or topic</h1>
+
+//       {/* Search Input */}
+//       <input
+//         type="text"
+//         placeholder="🔍 Search for a test..."
+//         value={searchQuery}
+//         onChange={(e) => setSearchQuery(e.target.value)}
+//         className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+//       />
+
+//       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+//         {filteredTests.length > 0 ? (
+//           filteredTests.map((test) => (
+//             <div
+//               key={test.id}
+//               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+//             >
+//               <div className="flex items-center justify-between">
+//                 <h2 className="text-xl font-semibold">{test.title}</h2>
+//                 <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
+//                   <PlayCircle className="w-6 h-6" />
+//                 </Link>
+//               </div>
+//               <p className="text-gray-600 mt-2">🎯 Click to start the test</p>
+
+//               {/* PDF Download Button */}
+//               <a
+//                 href={test.pdfUrl}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 className="flex items-center text-green-600 mt-4 hover:underline"
+//               >
+//                 <Download className="w-5 h-5 mr-2" /> Download PDF 📄
+//               </a>
+
+//               {/* WhatsApp Share Button */}
+//               <button
+//                 onClick={() => shareOnWhatsApp(test.title, test.testUrl)}
+//                 className="flex items-center text-red-500 mt-4 hover:underline"
+//               >
+//                 <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-0 hover:underline" />
+//               </button>
+//             </div>
+//           ))
+//         ) : (
+//           <p className="text-gray-500 col-span-full text-center">No tests found.</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { useParams, Link } from 'react-router-dom';
+// import { PlayCircle, Download, Share2 } from 'lucide-react';
+// import { FaWhatsapp } from 'react-icons/fa';
+
+// export function TestList() {
+//   const { subject, topic } = useParams();
+//   const [searchQuery, setSearchQuery] = useState('');
+//   const [tests, setTests] = useState([]);
+
+//   const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=775837082&single=true&output=csv';
+
+//   useEffect(() => {
+//     fetch(GOOGLE_SHEET_CSV_URL)
+//       .then((response) => response.text())
+//       .then((csvText) => {
+//         const rows = csvText.split('\n').slice(1); // Remove header row
+//         const parsedTests = rows.map((row) => {
+//           const [id, title, pdfUrl, testUrl] = row.split(',');
+//           return { id, title, pdfUrl, testUrl };
+//         });
+//         setTests(parsedTests);
+//       })
+//       .catch((error) => console.error('Error fetching tests:', error));
+//   }, []);
+
+//   const filteredTests = tests.filter((test) =>
+//     test.title.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   const shareOnWhatsApp = (testTitle, testUrl) => {
+//     const message = `🚀 *${testTitle}* - MCQ Test is available!\n📖 Take the test here: ${testUrl}\n✅ Start preparing now!`;
+//     const encodedMessage = encodeURIComponent(message);
+//     window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+//   };
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       <h1 className="text-2xl font-bold mb-6">📚 Enter your subject name or topic</h1>
+
+//       <input
+//         type="text"
+//         placeholder="🔍 Search for a test..."
+//         value={searchQuery}
+//         onChange={(e) => setSearchQuery(e.target.value)}
+//         className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+//       />
+
+//       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+//         {filteredTests.length > 0 ? (
+//           filteredTests.map((test) => (
+//             <div
+//               key={test.id}
+//               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+//             >
+//               <div className="flex items-center justify-between">
+//                 <h2 className="text-xl font-semibold">{test.title}</h2>
+//                 <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
+//                   <PlayCircle className="w-6 h-6" />
+//                 </Link>
+//               </div>
+//               <p className="text-gray-600 mt-2">🎯 Click to start the test</p>
+
+//               <a
+//                 href={test.pdfUrl}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 className="flex items-center text-green-600 mt-4 hover:underline"
+//               >
+//                 <Download className="w-5 h-5 mr-2" /> Download PDF 📄
+//               </a>
+
+//               <button
+//                 onClick={() => shareOnWhatsApp(test.title, test.testUrl)}
+//                 className="flex items-center text-red-500 mt-4 hover:underline"
+//               >
+//                 <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-0 hover:underline" />
+//               </button>
+//             </div>
+//           ))
+//         ) : (
+//           <p className="text-gray-500 col-span-full text-center">No tests found.</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { PlayCircle, Download, Share2, Play } from 'lucide-react';
+import { FaWhatsapp, FaGooglePlay } from 'react-icons/fa';
+
+export function TestList() {
+  const { subject, topic } = useParams();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [tests, setTests] = useState([]);
+  const [loading, setLoading] = useState(true); // Track loading state
+
+  const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=775837082&single=true&output=csv';
+
+  useEffect(() => {
+    fetch(GOOGLE_SHEET_CSV_URL)
+      .then((response) => response.text())
+      .then((csvText) => {
+        const rows = csvText.split('\n').slice(1); // Remove header row
+        const parsedTests = rows.map((row) => {
+          const [id, title, pdfUrl, testUrl] = row.split(',');
+          return { id, title, pdfUrl, testUrl };
+        });
+        setTests(parsedTests);
+      })
+      .catch((error) => console.error('Error fetching tests:', error))
+      .finally(() => setLoading(false)); // Stop loading once data is fetched
+  }, []);
+
+  const filteredTests = tests.filter((test) =>
+    test.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const shareOnWhatsApp = (testTitle, testUrl) => {
+    const message = `🚀 *${testTitle}* - MCQ Test is available!\n📖 Take the test here: ${testUrl}\n✅ Start preparing now!`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-6">📚 Enter your subject name or topic</h1>
+
+      <input
+        type="text"
+        placeholder="🔍 Search for a test..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+      />
+
+      {loading ? (
+        <div className="flex justify-center items-center py-10">
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {filteredTests.length > 0 ? (
+            filteredTests.map((test) => (
+              <div
+                key={test.id}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+              >
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-semibold">{test.title}</h2>
+                  <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
+                  <div className="flex items-center justify-between">
+               <PlayCircle className="w-15 h-15 mt-0 text-blue-600 hover:underline" />
+             </div>
+
+                  </Link>
+             <a
+  href="https://play.google.com/store/apps/details?id=com.ajaykumardhurwe.ajaydhurwe"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center text-green-600 mt-4 hover:underline"
+>
+  <FaGooglePlay className="w-6 h-6 mr-2 mt-0" /> Download App
+</a>
+
+                </div>
+                <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
+                <p className="text-gray-600 mt-2 hover:underline">🎯 Click to start the test</p>
+                </Link>
+                <a
+                  href={test.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-green-600 mt-4 hover:underline"
+                >
+                  <Download className="w-5 h-5 mr-2" /> Download PDF 📄
+                </a>
+
+                <button
+                  onClick={() => shareOnWhatsApp(test.title, test.testUrl)}
+                  className="flex items-center text-red-500 mt-4 hover:underline"
+                >
+                  <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-2 hover:underline" />
+                </button>
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-500 col-span-full text-center">No tests found.</p>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+

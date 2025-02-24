@@ -180,6 +180,45 @@ function App() {
   return (
    <BrowserRouter>
    <div>
+
+
+   <div style={{ 
+  display: 'flex', 
+  flexDirection: 'row', 
+  alignItems: 'center', 
+  justifyContent: 'flex-end', 
+  position: 'fixed', 
+  top: 0, 
+  left: 0, 
+  padding: '10px',
+  backgroundColor: 'transparent',
+  zIndex: 1000 ,
+  opacity:1,
+}}>
+
+  <Notification />
+</div>
+
+
+<div style={{ 
+  display: 'flex', 
+  flexDirection: 'row', 
+  alignItems: 'center', 
+  justifyContent: 'flex-end', 
+  position: 'fixed', 
+  top: 0, 
+  right: 0, 
+  padding: '10px',
+  // backgroundColor: '#fff',
+  backgroundColor: 'transparent',
+  
+  zIndex: 1000 ,
+  opacity:1,
+}}>
+
+  <VisitorCounter></VisitorCounter>
+</div>
+
     <Routes>
  
     {/* <Route path="/" element={<Home />} /> */}
