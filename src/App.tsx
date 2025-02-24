@@ -179,6 +179,41 @@ function App() {
    <BrowserRouter>
    <div>
     <Routes>
+ 
+    <Route path="/" element={<Home />} />
+           <Route path="/mcq/*" element={<MCQ />} />
+           {/* <Route path="/mcq/indian-constitution/part-1/test2" element={<MCQ />} /> */}
+
+           <Route path="/jobs" element={<Jobs />} />
+           <Route path="/a²class" element={<A2Class />} />
+           <Route path="/profile" element={<Profile />} />
+           <Route path="/jobs" element={<Jobs />} />
+           <Route path="/job-details" element={<JobDetails />} />
+           <Route path="/english" element={<MainPage />} />
+         <Route path="/hindi" element={<MainPage />} />
+         <Route path="/topics/:subject" element={<TopicList />} />
+         <Route path="/payment/:planId" element={<PaymentPage />} />
+         <Route path="/app/payment/:planId" element={<PaymentPage />} />
+         <Route path="/payment-succes" element={<PaymentSuccessPage />} /> 
+
+      
+         <Route path="/mathsten" element={<MainPage />} />
+         <Route path="/about-us" element={<AboutUs />} />
+         <Route path="/contact-us" element={<ContactUs />} />
+         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+         <Route path="/services" element={<Services />} />
+         <Route path="/eformfillup" element={<EFormFillup />} />
+         <Route path="/jobconsultancy" element={<JobConsultancy />} />
+       
+         <Route path="/colleges" element={<Colleges />} />
+         {/* <Route path="/schools" element={<Schools />} /> */}
+         <Route path="/schools" element={<SchoolsData />} />
+
+         <Route path="college/:name" element={<CollegeDetail />} />
+         <Route path="*" element={<NotFound />} />
+        
+
+
   <Route path="/mcq/*" element={<MCQ />} />
       
     </Routes>
