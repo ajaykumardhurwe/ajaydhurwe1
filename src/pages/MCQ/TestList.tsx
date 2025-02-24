@@ -484,39 +484,29 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PlayCircle, Download, Share2 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export function TestList() {
   const { subject, topic } = useParams();
-  const [tests, setTests] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=0&single=true&output=csv")
-      .then(response => response.text())
-      .then(data => {
-        const rows = data.split("\n").slice(1);
-        const parsedTests = rows.map(row => {
-          const [id, title, pdfUrl, testUrl] = row.split(",");
-          return { id, title, pdfUrl, testUrl };
-        });
-        setTests(parsedTests);
-      });
-  }, []);
+  const tests = [
+    { id: 'test1', title: 'MCQ Test 1', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test2', title: 'MCQ Test 2', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test3', title: 'MCQ Test 3', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test4', title: 'MCQ Test 4', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test5', title: 'MCQ Test 5', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test6', title: 'Indian Constitution', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+
+  ];
+
+  // Filter tests based on search query
+  const filteredTests = tests.filter((test) =>
+    test.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const shareOnWhatsApp = (testTitle, testUrl) => {
     const message = `🚀 *${testTitle}* - MCQ Test is available!\n📖 Take the test here: ${testUrl}\n✅ Start preparing now!`;
@@ -527,29 +517,127 @@ export function TestList() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6">📚 Available Tests</h1>
+
+      {/* Search Input */}
+      <input
+        type="text"
+        placeholder="🔍 Search for a test..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+      />
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {tests.map((test) => (
-          <div key={test.id} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">{test.title}</h2>
-              <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
-                <PlayCircle className="w-6 h-6" />
-              </Link>
+        {filteredTests.length > 0 ? (
+          filteredTests.map((test) => (
+            <div
+              key={test.id}
+              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+            >
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-semibold">{test.title}</h2>
+                <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
+                  <PlayCircle className="w-6 h-6" />
+                </Link>
+              </div>
+              <p className="text-gray-600 mt-2">🎯 Click to start the test</p>
+
+              {/* PDF Download Button */}
+              <a
+                href={test.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-green-600 mt-4 hover:underline"
+              >
+                <Download className="w-5 h-5 mr-2" /> Download PDF 📄
+              </a>
+
+              {/* WhatsApp Share Button */}
+              <button
+                onClick={() => shareOnWhatsApp(test.title, test.testUrl)}
+                className="flex items-center text-red-500 mt-4 hover:underline"
+              >
+                <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-0 hover:underline" />
+              </button>
             </div>
-            <p className="text-gray-600 mt-2">🎯 Click to start the test</p>
-
-            {/* PDF Download Button */}
-            <a href={test.pdfUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 mt-4 hover:underline">
-              <Download className="w-5 h-5 mr-2" /> Download PDF 📄
-            </a>
-
-            {/* WhatsApp Share Button */}
-            <button onClick={() => shareOnWhatsApp(test.title, test.testUrl)} className="flex items-center text-red-500 mt-4 hover:underline">
-              <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-0 hover:underline" />
-            </button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-gray-500 col-span-full text-center">No tests found.</p>
+        )}
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { useParams, Link } from 'react-router-dom';
+// import { PlayCircle, Download, Share2 } from 'lucide-react';
+// import { FaWhatsapp } from 'react-icons/fa';
+
+// export function TestList() {
+//   const { subject, topic } = useParams();
+//   const [tests, setTests] = useState([]);
+
+//   useEffect(() => {
+//     fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTk8rnpNQmNvqfsLcBkapB_4vJVLOjIHw-zOlM6E2FeY8WxcvuSRSQR4cwr4T31cQR26x_Z5Ik4ShPG/pub?gid=0&single=true&output=csv")
+//       .then(response => response.text())
+//       .then(data => {
+//         const rows = data.split("\n").slice(1);
+//         const parsedTests = rows.map(row => {
+//           const [id, title, pdfUrl, testUrl] = row.split(",");
+//           return { id, title, pdfUrl, testUrl };
+//         });
+//         setTests(parsedTests);
+//       });
+//   }, []);
+
+//   const shareOnWhatsApp = (testTitle, testUrl) => {
+//     const message = `🚀 *${testTitle}* - MCQ Test is available!\n📖 Take the test here: ${testUrl}\n✅ Start preparing now!`;
+//     const encodedMessage = encodeURIComponent(message);
+//     window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+//   };
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       <h1 className="text-2xl font-bold mb-6">📚 Available Tests</h1>
+//       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+//         {tests.map((test) => (
+//           <div key={test.id} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+//             <div className="flex items-center justify-between">
+//               <h2 className="text-xl font-semibold">{test.title}</h2>
+//               <Link to={`/mcq/${subject}/${topic}/${test.id}`} className="text-blue-600">
+//                 <PlayCircle className="w-6 h-6" />
+//               </Link>
+//             </div>
+//             <p className="text-gray-600 mt-2">🎯 Click to start the test</p>
+
+//             {/* PDF Download Button */}
+//             <a href={test.pdfUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 mt-4 hover:underline">
+//               <Download className="w-5 h-5 mr-2" /> Download PDF 📄
+//             </a>
+
+//             {/* WhatsApp Share Button */}
+//             <button onClick={() => shareOnWhatsApp(test.title, test.testUrl)} className="flex items-center text-red-500 mt-4 hover:underline">
+//               <Share2 className="w-5 h-5 mr-2" /> Share on WhatsApp <FaWhatsapp className="text-green-500 mt-0 hover:underline" />
+//             </button>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
