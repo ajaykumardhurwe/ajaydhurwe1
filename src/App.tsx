@@ -173,6 +173,8 @@ import SchoolsData from './pages/A2Class/SchoolsData';
 import CollegeDetail from './pages/A2Class/CollegeDetail';
 import Notification from './components/layout/Notification';
 import NotFound from './pages/NotFound';
+import { MCQTest } from './pages/MCQ/MCQTest';
+import { TestList } from './pages/MCQ/TestList';
 
 function App() {
   return (
@@ -181,8 +183,10 @@ function App() {
     <Routes>
  
     {/* <Route path="/" element={<Home />} /> */}
-    <Route path="/" element={<MCQ />} />
+    {/* <Route path="/" element={<MCQTest />}  */}
+    <Route path="/" element={<TestList />} />
 
+ {/* <Route path="/:subject/:topic/:testId" element={<MCQTest />} /> */}
            <Route path="/mcq/*" element={<MCQ />} />
            {/* <Route path="/mcq/indian-constitution/part-1/test2" element={<MCQ />} /> */}
 
