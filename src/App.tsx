@@ -180,7 +180,9 @@ function App() {
    <div>
     <Routes>
  
-    <Route path="/" element={<Home />} />
+    {/* <Route path="/" element={<Home />} /> */}
+    <Route path="/" element={<MCQ />} />
+
            <Route path="/mcq/*" element={<MCQ />} />
            {/* <Route path="/mcq/indian-constitution/part-1/test2" element={<MCQ />} /> */}
 
