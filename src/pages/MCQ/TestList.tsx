@@ -494,12 +494,28 @@ export function TestList() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const tests = [
-    { id: 'test1', title: 'MCQ Test 1', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
-    { id: 'test2', title: 'MCQ Test 2', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
-    { id: 'test3', title: 'MCQ Test 3', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
-    { id: 'test4', title: 'MCQ Test 4', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
-    { id: 'test5', title: 'MCQ Test 5', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
-    { id: 'test6', title: 'Indian Constitution', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test1', title: 'भारतीय संविधान भाग 1', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-1' },
+    { id: 'test6', title: 'भारतीय संविधान भाग 2', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-2' },
+    { id: 'test11', title: 'भारतीय संविधान भाग 3', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-3' },
+    { id: 'test16', title: 'भारतीय संविधान भाग 4', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-4' },
+    { id: 'test21', title: 'भारतीय संविधान भाग 5', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-5' },
+    { id: 'test26', title: 'भारतीय संविधान भाग 6', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-6' },
+    { id: 'test31', title: 'भारतीय संविधान भाग 7', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-7' },
+    { id: 'test36', title: 'भारतीय संविधान भाग 8', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-8' },
+    { id: 'test41', title: 'भारतीय संविधान भाग 9', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-9' },
+    { id: 'test46', title: 'भारतीय संविधान भाग 10', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-10' },
+    { id: 'test51', title: 'भारतीय संविधान भाग 11', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-11' },
+    { id: 'test56', title: 'भारतीय संविधान भाग 12', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-12' },
+    { id: 'test61', title: 'भारतीय संविधान भाग 13', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-13' },
+    { id: 'test66', title: 'भारतीय संविधान भाग 14', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-14' },
+    { id: 'test71', title: 'भारतीय संविधान भाग 15', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-15' },
+    { id: 'test76', title: 'भारतीय संविधान भाग 16', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-16' },
+    { id: 'test81', title: 'भारतीय संविधान भाग 17', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-17' },
+    { id: 'test86', title: 'भारतीय संविधान भाग 18', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-18' },
+    { id: 'test91', title: 'भारतीय संविधान भाग 19', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-19' },
+    { id: 'test96', title: 'भारतीय संविधान भाग 20', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-20' },
+    { id: 'test101', title: 'भारतीय संविधान भाग 21', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-21' },
+    { id: 'test106', title: 'भारतीय संविधान भाग 22', pdfUrl: 'https://drive.google.com/file/d/1ZLnTa9Phvt9pnkEjwK0JoM50FY-RnjbR/view', testUrl: 'http://localhost:5173/mcq/indian-constitution/part-22' }
 
   ];
 
