@@ -175,7 +175,7 @@ import Notification from './components/layout/Notification';
 import NotFound from './pages/NotFound';
 import { MCQTest } from './pages/MCQ/MCQTest';
 import { TestList } from './pages/MCQ/TestList';
-
+import Analytics from './lib/Analytics';
 function App() {
   return (
    <BrowserRouter>
@@ -217,6 +217,7 @@ function App() {
 }}>
 
   <VisitorCounter></VisitorCounter>
+  <Analytics></Analytics>
 </div>
 
     <Routes>

@@ -803,6 +803,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PlayCircle, Download, Share2, Play } from 'lucide-react';
 import { FaWhatsapp, FaGooglePlay } from 'react-icons/fa';
+import { Exam } from './exam';
 
 export function TestList() {
   const { subject, topic } = useParams();
@@ -839,7 +840,30 @@ export function TestList() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">📚 MCQ Test</h1>
+      <h1 className="text-2xl font-bold mb-6">📚 </h1>
+
+<Exam></Exam>
+
+{/* <div style={{ 
+  display: 'flex', 
+  flexDirection: 'row', 
+  alignItems: 'center', 
+  justifyContent: 'flex-end', 
+  position: 'fixed', 
+  top: 0, 
+  left: 50, 
+  padding: '10px',
+  backgroundColor: 'transparent',
+  zIndex: 1000 ,
+  opacity:1,
+}}>
+  <Link to="/profile" 
+  className="px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-transform transform hover:scale-105"
+  >
+          Profile
+        </Link>
+
+</div> */}
 
       <input
         type="text"
