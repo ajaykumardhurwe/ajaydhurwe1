@@ -15,7 +15,7 @@ interface Question {
   explanation: string;
 }
 
-export function MCQTest() {
+export function CgPscMCQTest() {
   const { testId } = useParams();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -32,28 +32,27 @@ export function MCQTest() {
 
     
         //  Part 1
-        test1: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSzHWRjBpxk21IxacYqBlHTtryT61R8QC6dDkb8qgYTEBN-LQWCZnuVs-DogFEtNSLZXazPf57xDke4/pub?gid=0&single=true&output=csv',
-        test2: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSzHWRjBpxk21IxacYqBlHTtryT61R8QC6dDkb8qgYTEBN-LQWCZnuVs-DogFEtNSLZXazPf57xDke4/pub?gid=1128083867&single=true&output=csv',
-        test3: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSzHWRjBpxk21IxacYqBlHTtryT61R8QC6dDkb8qgYTEBN-LQWCZnuVs-DogFEtNSLZXazPf57xDke4/pub?gid=250122569&single=true&output=csv',
-        test4: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-OsP_a-VeLff3eQpKiPJELAtWSznKLcCZM_ky6QasqB4ab6A2cXPJLHm1KwcSSW4kl8c6jqi11yKI/pub?gid=2054258588&single=true&output=csv',
-        test5: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-OsP_a-VeLff3eQpKiPJELAtWSznKLcCZM_ky6QasqB4ab6A2cXPJLHm1KwcSSW4kl8c6jqi11yKI/pub?gid=806742694&single=true&output=csv',
-        cgpsctest2: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=0&single=true&output=csv',
+        test1: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=0&single=true&output=csv',
+        test2: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=262522338&single=true&output=csv',
+        test3: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=268938800&single=true&output=csv',
+        test4: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=1121093859&single=true&output=csv',
+        test5: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=19383609&single=true&output=csv',
         
         // Add more tests here as needed
     // you can write in both way
          // Part 2
-      'test6': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-OsP_a-VeLff3eQpKiPJELAtWSznKLcCZM_ky6QasqB4ab6A2cXPJLHm1KwcSSW4kl8c6jqi11yKI/pub?gid=0&single=true&output=csv',
-      'test7': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-OsP_a-VeLff3eQpKiPJELAtWSznKLcCZM_ky6QasqB4ab6A2cXPJLHm1KwcSSW4kl8c6jqi11yKI/pub?gid=543287620&single=true&output=csv',
-      'test8': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-OsP_a-VeLff3eQpKiPJELAtWSznKLcCZM_ky6QasqB4ab6A2cXPJLHm1KwcSSW4kl8c6jqi11yKI/pub?gid=405127809&single=true&output=csv',
-      'test9': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-OsP_a-VeLff3eQpKiPJELAtWSznKLcCZM_ky6QasqB4ab6A2cXPJLHm1KwcSSW4kl8c6jqi11yKI/pub?gid=2054258588&single=true&output=csv',
-      'test10': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_V__ly9B1oFhI19RHaoCqKUnWG0zrUoyYfV2c6civ9p_bmGLp_muEruLHvJi3YDh8pRuGYraj9HwT/pub?output=csv',
+      'test6': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=19383609&single=true&output=csv',
+      'test7': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=749628536&single=true&output=csv',
+      'test8': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=2033950359&single=true&output=csv',
+      'test9': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=1722760764&single=true&output=csv',
+      'test10': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=1685347255&single=true&output=csv',
     
 
       
   
   // Part 3
-  'test11': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_d0jiFgdbYyDGrCrWQGIriSBLCRyhwjptMdoPRtAd7cwjUN5BLmGMtlOI73AnC0Eq5nfcMx5GVlx4/pub?gid=0&single=true&output=csv',
-  'test12': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_d0jiFgdbYyDGrCrWQGIriSBLCRyhwjptMdoPRtAd7cwjUN5BLmGMtlOI73AnC0Eq5nfcMx5GVlx4/pub?gid=1823752977&single=true&output=csv',
+  'test11': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=1057403311&single=true&output=csv',
+  'test12': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRksrsstHJhHV8eMMP22eO4PhkeGXwmXJQy20b0HQAbSgs64prNgeI94VWhkpGLha7fZdkiTVr0fxx2/pub?gid=1893932480&single=true&output=csv',
   'test13': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_d0jiFgdbYyDGrCrWQGIriSBLCRyhwjptMdoPRtAd7cwjUN5BLmGMtlOI73AnC0Eq5nfcMx5GVlx4/pub?gid=1122277759&single=true&output=csv',
   'test14': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_d0jiFgdbYyDGrCrWQGIriSBLCRyhwjptMdoPRtAd7cwjUN5BLmGMtlOI73AnC0Eq5nfcMx5GVlx4/pub?gid=1641912578&single=true&output=csv',
   'test15': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_d0jiFgdbYyDGrCrWQGIriSBLCRyhwjptMdoPRtAd7cwjUN5BLmGMtlOI73AnC0Eq5nfcMx5GVlx4/pub?gid=356943713&single=true&output=csv',
@@ -378,8 +377,8 @@ export function MCQTest() {
       <h1 className="text-lg font-bold">
         Question {currentQuestion + 1} / {questions.length}
       </h1>
-      <p className="text-sm text-gray-600">
-        ⏱️ Time Left: {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
+      <p className="text-sm text-gray-600" >
+        ⏱️ Time Left: {Math.floor(timeLeft / 5.)}:{String(timeLeft % 60).padStart(2, "0")}
       </p>
     </div>
     

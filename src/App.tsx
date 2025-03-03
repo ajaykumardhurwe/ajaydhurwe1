@@ -176,6 +176,11 @@ import NotFound from './pages/NotFound';
 import { MCQTest } from './pages/MCQ/MCQTest';
 import { TestList } from './pages/MCQ/TestList';
 import Analytics from './lib/Analytics';
+import { CgPscTestList } from './pages/CGPSC/CgPscTestList';
+import { CgPscMCQTest } from './pages/CGPSC/CgPscMCQTest';
+
+
+
 function App() {
   return (
    <BrowserRouter>
@@ -260,8 +265,9 @@ function App() {
         
 
 
-  <Route path="/mcq/*" element={<MCQ />} />
-      
+  {/* <Route path="/mcq/" element={<MCQ />} /> */}
+  <Route path="/cgpsc" element={<CgPscTestList />} />
+  <Route path="/cgpscmcq/*" element={<CgPscMCQTest />} />
     </Routes>
    </div>
    </BrowserRouter>
